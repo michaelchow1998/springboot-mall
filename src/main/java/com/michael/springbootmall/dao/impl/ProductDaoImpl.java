@@ -25,6 +25,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<Product> getProducts(ProductQueryParams productQueryParams) {
+        //Search condition
         String sql = "SELECT product_id,product_name, category, image_url, price, stock, description, created_date, last_modified_date " +
                      "FROM product WHERE 1=1";
         Map<String, Object> map = new HashMap<>();
@@ -37,7 +38,13 @@ public class ProductDaoImpl implements ProductDao {
             map.put("search", "%" + productQueryParams.getSearch() + "%");
         }
 
-        sql = sql + " ORDER BY " + productQueryParams.getOrderBy() + " " +productQueryParams.getSort();
+        //Sorting
+        sql = sql + " ORDER BY " + productQueryParams.getOrderBy() + " " + productQueryParams.getSort();
+
+        //Pagination
+        sql = sql + " LIMIT :limit OFFSET :offset";
+        map.put("limit",productQueryParams.getLimit());
+        map.put("offset",productQueryParams.getOffset());
 
         List<Product> productList = namedParameterJdbcTemplate.query(sql,map, new ProductRowMapper());
 
