@@ -5,6 +5,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 
 public class ProductRequest {
@@ -20,6 +21,8 @@ public class ProductRequest {
     @NotNull
     private Integer stock;
     private String description;
+
+    private Date lastModifiedDate;
 
     public String getProductName() {
         return productName;
@@ -67,5 +70,13 @@ public class ProductRequest {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 }

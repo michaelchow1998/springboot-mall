@@ -121,7 +121,7 @@ public class ProductDaoImpl implements ProductDao {
         map.put("stock",productRequest.getStock());
         map.put("description",productRequest.getDescription());
 
-        map.put("lastModifiedDate",new Date());
+        map.put("lastModifiedDate",productRequest.getLastModifiedDate());
 
         namedParameterJdbcTemplate.update(sql,map);
     }
