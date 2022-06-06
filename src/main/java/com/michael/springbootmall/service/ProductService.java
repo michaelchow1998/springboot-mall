@@ -2,8 +2,13 @@ package com.michael.springbootmall.service;
 
 import com.michael.springbootmall.dto.ProductRequest;
 import com.michael.springbootmall.model.Product;
+import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 public interface ProductService {
+
+    List<Product> getProducts();
     Product getProductById(Integer productId);
 
     Integer createProduct(ProductRequest productRequest);
@@ -11,4 +16,5 @@ public interface ProductService {
     void updateProduct(Integer productId, ProductRequest productRequest);
 
     void deleteProduct(Integer productId);
+
 }
