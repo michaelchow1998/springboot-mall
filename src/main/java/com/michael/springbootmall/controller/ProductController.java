@@ -37,7 +37,7 @@ public class ProductController {
     }
 
     @PutMapping("/products/{productId}")
-    public  ResponseEntity<Product> updateProduct(@PathVariable Integer productId,
+    public ResponseEntity<Product> updateProduct(@PathVariable Integer productId,
                                                   @RequestBody @Valid ProductRequest productRequest
                                                   ){
         //check product not empty
@@ -45,7 +45,7 @@ public class ProductController {
         if(product == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        
+
         //update product
         productService.updateProduct(productId, productRequest);
 
@@ -53,5 +53,19 @@ public class ProductController {
 
         return  ResponseEntity.status(HttpStatus.OK).body(updatedProduct);
 
+    }
+
+    @DeleteMapping("/products/{productId}")
+    public ResponseEntity<?> deleteProduct(@PathVariable Integer productId){
+
+        //check product not empty
+        Product product = productService.getProductById(productId);
+        if(product == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        //delete product by productId
+        productService.deleteProduct(productId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
