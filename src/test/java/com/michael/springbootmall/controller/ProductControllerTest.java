@@ -1,4 +1,4 @@
-package com.michael.springbootmall;
+package com.michael.springbootmall.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.michael.springbootmall.constant.ProductCategory;
