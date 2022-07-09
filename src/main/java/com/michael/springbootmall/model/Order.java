@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,4 +16,5 @@ public class Order {
     private Date createDate;
     private Date lastModifiedDate;
 
+    private List<OrderItem> orderItemList;
 }
