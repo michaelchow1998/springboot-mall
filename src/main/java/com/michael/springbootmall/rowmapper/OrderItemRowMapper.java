@@ -20,6 +20,6 @@ public class OrderItemRowMapper implements RowMapper<OrderItem> {
         orderItem.setProductName(rs.getString("product_name"));
         orderItem.setImageUrl(rs.getString("image_url"));
 
-        return OrderItem;
+        return orderItem;
     }
 }
